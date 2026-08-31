@@ -6,12 +6,12 @@ Site institucional da **JBMR** (oficina de automóveis).
 
 - Site desenvolvido anteriormente, **fora de linha**: domínio e alojamento (OVH) não foram renovados.
 - Código-fonte **ainda não está neste repositório** — vai ser importado.
-- Decisão tomada pelo cliente: **retomar** domínio + presença online.
+- `jbmr.com` perdido (registado por terceiros). Caminho novo: **jbmr.pt**.
 
 ## Próximos passos
 
-Ver [`docs/renovacao-ovh.md`](docs/renovacao-ovh.md) — checklist de recuperação
-do domínio, do alojamento e dos dados, por ordem de urgência.
+Ver [`docs/setup-jbmr-pt.md`](docs/setup-jbmr-pt.md).
+
 
 ## Estrutura prevista
 
