@@ -3,87 +3,95 @@
 O `jbmr.com` está perdido (ver [`diagnostico-dns.md`](diagnostico-dns.md)).
 O caminho é registar **jbmr.pt**, verificado como livre a 2026-08-31.
 
----
-
-## 1. Registar o domínio (fazer primeiro, hoje)
-
-Painel OVH → *Encomendar* → *Nomes de domínio* → `jbmr.pt`
-
-Três coisas a acertar no checkout, porque são difíceis de corrigir depois:
-
-- [ ] **Titular = a empresa, não o programador.**
-      Nome e NIF da JBMR nos dados do titular. Foi assim que o `.com` se
-      perdeu: quem tinha de renovar não era quem recebia os avisos.
-- [ ] **Email de contacto do titular = um email que a JBMR lê todos os dias.**
-      Não pode ser um email do domínio que se está a registar (se o domínio
-      expirar, os avisos de expiração deixam de chegar).
-- [ ] **Renovação automática LIGADA**, com cartão válido associado à conta.
-
-Registo mínimo recomendado: 2 anos. A diferença de preço é irrelevante e
-reduz para metade as oportunidades de isto voltar a acontecer.
-
-> Nota: o `.pt` é gerido pelo registo nacional (DNS.PT). Confirma no processo
-> de encomenda que dados exigem para o titular. Não vale a pena registar
-> variações defensivas (`jbmr.com.pt`, etc.) para uma oficina local.
-
-Depois de registado, ativar nas definições do domínio:
-- [ ] Alertas de expiração por email
-- [ ] Proteção contra transferência (*transfer lock*)
+O site antigo precisa de alojamento, por isso a encomenda faz-se em conjunto:
+a OVH oferece o domínio no primeiro ano a quem subscreve um plano de
+alojamento web.
 
 ---
 
-## 2. DNS (só depois de sabermos onde fica o site)
+## 0. Ordem da encomenda (importante)
 
-Deixar os nameservers da OVH por omissão. A zona configura-se quando a
-decisão de alojamento estiver tomada. Nesta fase não é preciso mexer.
+**Começar pelo ALOJAMENTO, não pelo domínio.**
 
-Quando chegar a altura, os registos a criar são:
-- `A` / `CNAME` para o alojamento do site
-- `MX` + `SPF` para o email, se houver
-- `TXT` de verificação, se o alojamento pedir
+O domínio gratuito faz parte do fluxo de encomenda do alojamento. Comprar o
+domínio primeiro, em separado, perde a oferta: fica pago e a oferta já não
+tem onde ser aplicada.
+
+Caminho: Painel → *Encomendar* → **Alojamentos** (não *Nomes de domínio*) →
+escolher o plano → o formulário pergunta o domínio a associar → indicar
+`jbmr.pt` como domínio novo.
+
+### Confirmar antes de pagar
+
+- [ ] No carrinho, `jbmr.pt` aparece a **0,00 € no primeiro ano**.
+      Se aparecer a 16,99 €, a extensão `.pt` não está abrangida pela oferta.
+      Nesse caso a poupança não existe e a decisão do plano deve ser tomada
+      só pelo mérito do alojamento.
+- [ ] Qual o **preço de renovação** do domínio e do alojamento no 2.º ano.
+      O primeiro ano é promocional, o segundo é o preço real.
+- [ ] Período de compromisso do alojamento (mensal costuma ser mais caro
+      por mês do que 12 meses).
 
 ---
 
-## 3. Email @jbmr.pt
+## 1. Escolher o plano de alojamento
 
-Decisão à parte do site. A oficina usa email no domínio?
+Depende do que o site antigo for. Requisitos a validar na ficha do plano:
 
-| Opção | Quando faz sentido |
+| Se o site for | Precisa de |
 |---|---|
-| Nenhum | A oficina só usa telefone e um Gmail pessoal. Não se cria nada. |
-| OVH (incluído / plano base) | Uma ou duas caixas, uso simples. Mais barato. |
-| Google Workspace / Microsoft 365 | Já usam Gmail ou Outlook e querem manter os hábitos. Custo por caixa. |
+| WordPress ou PHP + MySQL | PHP 8.x e **pelo menos 1 base de dados MySQL**. Os planos de entrada mais baratos por vezes não incluem base de dados nenhuma. |
+| HTML/CSS/JS estático | Qualquer plano serve. Ou nem sequer alojamento pago: Cloudflare Pages faz isto de graça. |
 
-Se ficar sem email, não se criam registos MX. Não deixar MX a apontar para
-lado nenhum, como aconteceu no `.com`.
-
----
-
-## 4. Alojamento (decidir depois do upload do código)
-
-Depende do que o site antigo for:
-
-| Site antigo | Destino |
-|---|---|
-| HTML/CSS/JS estático | Cloudflare Pages ou Netlify, plano gratuito, deploy automático a partir deste repositório. Só se paga o domínio. |
-| WordPress ou PHP + MySQL | Alojamento OVH (ou equivalente) com PHP e base de dados. |
-
-Não renovar alojamento antes de sabermos isto.
+- [ ] Confirmar que o plano inclui base de dados, se for preciso
+- [ ] Confirmar espaço em disco suficiente para os ficheiros do site
+- [ ] Confirmar SSL gratuito (Let's Encrypt) incluído
 
 ---
 
-## 5. Para começar a trabalhar a partir do repositório
+## 2. Contacto de titular
 
-Depois do upload do código:
+- [ ] Titular = **a JBMR**, com o NIF da empresa. Não o programador.
+- [ ] Email do titular = email da oficina lido diariamente, e **nunca**
+      um `@jbmr.pt`
+- [ ] Morada e telefone da empresa
 
-- [ ] Código na branch de trabalho, sem `wp-config.php`, `.env`, dumps de
-      base de dados nem passwords (o `.gitignore` já bloqueia estes)
-- [ ] Identificar a stack e registar em `README.md`
-- [ ] Definir o destino de alojamento
-- [ ] Ligar o deploy automático
-- [ ] Apontar o DNS
-- [ ] Rever conteúdos desatualizados: horários, contactos, serviços
-- [ ] Google Business Profile da oficina, com link para jbmr.pt
+Mudar o titular depois é um procedimento formal, não a edição de um campo.
+
+---
+
+## 3. Depois de pagar
+
+- [ ] **Renovação automática ligada nos DOIS serviços**, domínio e
+      alojamento, separadamente. São renovações independentes.
+- [ ] Proteção contra transferência (*transfer lock*) no domínio
+- [ ] Validar o email de confirmação do contacto de titular, se for enviado
+- [ ] Verificar se ficaram dois produtos de email ativos (o Zimbra que vem
+      com o domínio e o email que vem com o alojamento). Não pagar dois.
+
+---
+
+## 4. Migração do site
+
+O alojamento novo vem **vazio**. Comprar alojamento não recupera nada do
+alojamento antigo, que já expirou.
+
+- [ ] Ficheiros do site antigo (upload para o repositório)
+- [ ] **Dump da base de dados**, se o site for WordPress ou tiver CMS.
+      Sem a base de dados existe o tema e o código, mas não existem os
+      conteúdos: páginas, textos, imagens, definições. Ficheiros sozinhos
+      não são um site WordPress.
+- [ ] Verificar compatibilidade do código antigo com PHP 8.x
+- [ ] Testar no URL temporário da OVH antes de apontar o DNS
+- [ ] Só depois: apontar o DNS e ativar SSL
+
+---
+
+## 5. DNS
+
+Deixar os nameservers da OVH. A zona configura-se quando o alojamento
+estiver ativo, e o painel costuma criar os registos automaticamente ao
+associar o domínio ao alojamento.
 
 ---
 
@@ -92,7 +100,8 @@ Depois do upload do código:
 | Item | Estado |
 |---|---|
 | jbmr.com | Perdido, registado por terceiros |
-| jbmr.pt | Livre a 2026-08-31, por registar |
+| jbmr.pt | Livre a 2026-08-31, por registar com o alojamento |
+| Alojamento | Necessário, plano por escolher |
 | Código do site antigo | Por carregar |
-| Alojamento | Por decidir |
-| Email no domínio | Por decidir |
+| Base de dados do site antigo | **Por confirmar se existe** |
+| Email no domínio | Incluído na encomenda |
