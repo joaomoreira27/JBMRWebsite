@@ -708,3 +708,85 @@ img {
         display: none !important;
     }
 }
+/* Estado de envio dos formulários */
+.form-status {
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding: 12px 15px;
+    border-radius: 4px;
+    border-left: 4px solid;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.form-status--a-enviar {
+    background-color: #f4f4f4;
+    border-color: #999;
+    color: #444;
+}
+
+.form-status--sucesso {
+    background-color: #e8f5ec;
+    border-color: #1c7c3f;
+    color: #14602f;
+}
+
+.form-status--erro,
+.form-status--aviso {
+    background-color: #fdecec;
+    border-color: #e60000;
+    color: #a30000;
+}
+
+/* Armadilha anti-spam: fora do ecrã, mas preenchível por bots */
+.contact-form input[name="botcheck"],
+.orcamento-form input[name="botcheck"] {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+/* Botão do menu mobile desenhado em CSS.
+   Não depende do Font Awesome: se o CDN falhar, a navegação
+   em telemóvel continua a funcionar. */
+.menu-toggle {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle__bars,
+.menu-toggle__bars::before,
+.menu-toggle__bars::after {
+    display: block;
+    width: 24px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #fff;
+}
+
+.menu-toggle__bars {
+    position: relative;
+}
+
+.menu-toggle__bars::before,
+.menu-toggle__bars::after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.menu-toggle__bars::before { top: -8px; }
+.menu-toggle__bars::after  { top: 8px; }
+
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+}
