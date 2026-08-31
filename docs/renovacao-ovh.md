@@ -1,6 +1,9 @@
 # Recuperação do domínio e alojamento — JBMR (OVH)
 
-Checklist por ordem de urgência. As duas primeiras secções são **sensíveis ao
+**LER PRIMEIRO:** [`diagnostico-dns.md`](diagnostico-dns.md) — o domínio `jbmr.com` não
+aponta para a OVH. A secção 1 abaixo está resolvida em parte por esse diagnóstico.
+
+Checklist por ordem de urgência.
 tempo**: quanto mais tempo passar, maior a probabilidade de perda irreversível.
 
 ---
