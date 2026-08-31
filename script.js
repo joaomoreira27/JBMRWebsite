@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 `--- DESCRIÇÃO ---\n${descricao}`
             );
 
-            const mailtoLink = `mailto:joaobritoprd@gmail.com;joaomoreira2727@gmail.com?subject=${assunto}&body=${corpo}`;
+            const mailtoLink = `mailto:joaobritoprd@gmail.com?subject=${assunto}&body=${corpo}`;
             window.location.href = mailtoLink;
         });
     }
