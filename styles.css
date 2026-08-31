@@ -79,16 +79,6 @@ img {
     transition: all 0.3s ease;
 }
 
-.btn-primary {
-    background-color: #e60000;
-    color: #fff;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #cc0000;
-}
-
 .btn-outline {
     background-color: transparent;
     color: #e60000;
@@ -184,7 +174,7 @@ img {
 
 /* Hero Section */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('public/images/hero.webp');
     background-size: cover;
     background-position: center;
     height: 60vh;
@@ -616,7 +606,8 @@ img {
     margin-bottom: 15px;
 }
 
-.contact-item i {
+.contact-item i,
+.contact-item .icon {
     color: #e60000;
     margin-right: 10px;
     min-width: 20px;
@@ -789,4 +780,15 @@ img {
 
 @media (max-width: 768px) {
     .menu-toggle { display: flex; }
+}
+
+/* Ícones SVG embutidos. Herdam tamanho e cor do texto,
+   por isso .card-icon e .contact-item continuam a controlá-los. */
+.icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: -0.125em;
+    flex-shrink: 0;
 }

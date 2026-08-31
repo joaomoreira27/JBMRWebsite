@@ -19,15 +19,26 @@
     <link rel="icon" href="/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Ícones: Bootstrap Icons (MIT), embutidos para o site não
+         depender de nenhum CDN externo. -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+        <symbol id="i-envelope" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/></symbol>
+        <symbol id="i-map-marker-alt" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/></symbol>
+        <symbol id="i-users" viewBox="0 0 16 16"><path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/></symbol>
+        <symbol id="i-shield-alt" viewBox="0 0 16 16"><path d="M5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56"/></symbol>
+        <symbol id="i-award" viewBox="0 0 16 16"><path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z"/>
+  <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/></symbol>
+    </svg>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="public/images/jbmrlogo.png" alt="JBMR Logo" />
+                    <img src="public/images/jbmrlogo.png" alt="JBMR, oficina de automóveis" width="770" height="298" />
                 </a>
             </div>
             <nav class="nav">
@@ -76,7 +87,7 @@
                     <p>Continuamos a crescer com a mesma dedicação, mantendo a confiança dos nossos clientes e investindo na qualidade dos nossos serviços.</p>
                 </div>
                 <div class="column">
-                    <img src="public/images/jbmroficina.webp" alt="Oficina JBMR" style="width: 100%; height: auto; border-radius: 8px;">
+                    <img src="public/images/jbmroficina.webp" alt="Interior da oficina JBMR" width="1536" height="1024" loading="lazy" decoding="async" style="width: 100%; height: auto; border-radius: 8px;">
                 </div>
             </div>
         </div>
@@ -92,28 +103,28 @@
             <div class="four-columns">
                 <div class="value-card">
                     <div class="value-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shield-alt"></use></svg>
                     </div>
                     <h3>Confiança</h3>
                     <p>Construímos relações de confiança com os nossos clientes através de um trabalho honesto e transparente.</p>
                 </div>
                 <div class="value-card">
                     <div class="value-icon">
-                        <i class="fas fa-award"></i>
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-award"></use></svg>
                     </div>
                     <h3>Qualidade</h3>
                     <p>Comprometemo-nos a entregar um serviço de excelência, utilizando materiais e técnicas de alta qualidade.</p>
                 </div>
                 <div class="value-card">
                     <div class="value-icon">
-                        <i class="fas fa-clock"></i>
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg>
                     </div>
                     <h3>Pontualidade</h3>
                     <p>Respeitamos os prazos estabelecidos, valorizando o tempo dos nossos clientes.</p>
                 </div>
                 <div class="value-card">
                     <div class="value-icon">
-                        <i class="fas fa-users"></i>
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"></use></svg>
                     </div>
                     <h3>Experiência</h3>
                     <p>Com 35 anos de experiência, a nossa equipa possui o conhecimento técnico para resolver qualquer problema.</p>
@@ -172,15 +183,15 @@
                 <div class="footer-column">
                     <h3>Contactos</h3>
                     <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-marker-alt"></use></svg>
                         <p>Rua Tapada do Sousa, Nº 38, 4580-208 Paredes, Porto</p>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-envelope"></use></svg>
                         <a href="mailto:joaobritoprd@gmail.com">joaobritoprd@gmail.com</a>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-phone"></i>
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"></use></svg>
                         <a href="tel:936850763">936 850 763</a>
                     </div>
                 </div>
