@@ -6,13 +6,17 @@ vendor/
 .env
 .env.*
 !.env.example
-wp-config.php
+ftp-config.*
+deploy-config.*
 *.sql
 
 # Build
 dist/
 build/
 .cache/
+
+# Logs
+*.log
 
 # Sistema
 .DS_Store
