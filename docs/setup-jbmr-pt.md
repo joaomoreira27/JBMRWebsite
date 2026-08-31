@@ -3,49 +3,33 @@
 O `jbmr.com` está perdido (ver [`diagnostico-dns.md`](diagnostico-dns.md)).
 O caminho é registar **jbmr.pt**, verificado como livre a 2026-08-31.
 
-O site antigo precisa de alojamento, por isso a encomenda faz-se em conjunto:
-a OVH oferece o domínio no primeiro ano a quem subscreve um plano de
-alojamento web.
+**O site antigo é estático (HTML/CSS/JS), sem base de dados.** Isso elimina
+a necessidade de alojamento pago: não é preciso PHP nem MySQL.
 
 ---
 
-## 0. Ordem da encomenda (importante)
+## 1. Comprar apenas o domínio
 
-**Começar pelo ALOJAMENTO, não pelo domínio.**
+Painel OVH → *Encomendar* → *Nomes de domínio* → `jbmr.pt`
 
-O domínio gratuito faz parte do fluxo de encomenda do alojamento. Comprar o
-domínio primeiro, em separado, perde a oferta: fica pago e a oferta já não
-tem onde ser aplicada.
+O alojamento gratuito da OVH (1 site, 100 MB SSD, 1 email) vem **incluído
+com a compra de qualquer domínio**. Não é preciso encomendar plano nenhum.
 
-Caminho: Painel → *Encomendar* → **Alojamentos** (não *Nomes de domínio*) →
-escolher o plano → o formulário pergunta o domínio a associar → indicar
-`jbmr.pt` como domínio novo.
+Custo:
 
-### Confirmar antes de pagar
-
-- [ ] No carrinho, `jbmr.pt` aparece a **0,00 € no primeiro ano**.
-      Se aparecer a 16,99 €, a extensão `.pt` não está abrangida pela oferta.
-      Nesse caso a poupança não existe e a decisão do plano deve ser tomada
-      só pelo mérito do alojamento.
-- [ ] Qual o **preço de renovação** do domínio e do alojamento no 2.º ano.
-      O primeiro ano é promocional, o segundo é o preço real.
-- [ ] Período de compromisso do alojamento (mensal costuma ser mais caro
-      por mês do que 12 meses).
-
----
-
-## 1. Escolher o plano de alojamento
-
-Depende do que o site antigo for. Requisitos a validar na ficha do plano:
-
-| Se o site for | Precisa de |
+| | Valor |
 |---|---|
-| WordPress ou PHP + MySQL | PHP 8.x e **pelo menos 1 base de dados MySQL**. Os planos de entrada mais baratos por vezes não incluem base de dados nenhuma. |
-| HTML/CSS/JS estático | Qualquer plano serve. Ou nem sequer alojamento pago: Cloudflare Pages faz isto de graça. |
+| 1.º ano | 16,99 € s/IVA (20,90 € c/IVA) |
+| Renovação | 13,39 € s/IVA por ano |
 
-- [ ] Confirmar que o plano inclui base de dados, se for preciso
-- [ ] Confirmar espaço em disco suficiente para os ficheiros do site
-- [ ] Confirmar SSL gratuito (Let's Encrypt) incluído
+Os planos Starter (2,59 €/mês na renovação) e Perso (5,99 €/mês) oferecem o
+domínio grátis no primeiro ano, mas custam 31 € a 72 € por ano a partir do
+segundo. Para um site estático não trazem nada de útil.
+
+### Não comprar
+
+- Starter, Perso ou qualquer plano da Gama Business/Agencies
+- Outras extensões: `jbmr.shop` renova a 30,89 €/ano, `jbmr.tech` a 56,29 €
 
 ---
 
@@ -57,41 +41,45 @@ Depende do que o site antigo for. Requisitos a validar na ficha do plano:
 - [ ] Morada e telefone da empresa
 
 Mudar o titular depois é um procedimento formal, não a edição de um campo.
+Foi por os avisos irem para quem não renovava que o `.com` se perdeu.
 
 ---
 
 ## 3. Depois de pagar
 
-- [ ] **Renovação automática ligada nos DOIS serviços**, domínio e
-      alojamento, separadamente. São renovações independentes.
-- [ ] Proteção contra transferência (*transfer lock*) no domínio
-- [ ] Validar o email de confirmação do contacto de titular, se for enviado
-- [ ] Verificar se ficaram dois produtos de email ativos (o Zimbra que vem
-      com o domínio e o email que vem com o alojamento). Não pagar dois.
+- [ ] Renovação automática ligada, com meio de pagamento válido na conta
+- [ ] Proteção contra transferência (*transfer lock*)
+- [ ] Alertas de expiração ativos
+- [ ] Validar o email de confirmação do titular, se for enviado
+- [ ] Confirmar que não ficam dois produtos de email a pagar (o Zimbra que
+      vem com o domínio e o que vem com o alojamento gratuito)
 
 ---
 
-## 4. Migração do site
+## 4. Onde fica o site (decidir depois do upload)
 
-O alojamento novo vem **vazio**. Comprar alojamento não recupera nada do
-alojamento antigo, que já expirou.
+Ambas as opções custam zero.
 
-- [ ] Ficheiros do site antigo (upload para o repositório)
-- [ ] **Dump da base de dados**, se o site for WordPress ou tiver CMS.
-      Sem a base de dados existe o tema e o código, mas não existem os
-      conteúdos: páginas, textos, imagens, definições. Ficheiros sozinhos
-      não são um site WordPress.
-- [ ] Verificar compatibilidade do código antigo com PHP 8.x
-- [ ] Testar no URL temporário da OVH antes de apontar o DNS
-- [ ] Só depois: apontar o DNS e ativar SSL
+| | A favor | Contra |
+|---|---|---|
+| **Alojamento gratuito OVH** | Já incluído. DNS automático, SSL grátis, email na mesma conta. Uma só conta para entregar ao cliente. | Limite de 100 MB. Exige imagens otimizadas. Deploy por FTP. |
+| **Cloudflare Pages** | Deploy a cada `git push`, CDN, sem limite de espaço relevante. | Para o domínio de raiz apontar para lá, o mais limpo é mover os nameservers para a Cloudflare e recriar os registos MX do email. |
+
+Inclinação atual: **alojamento OVH**, com otimização de imagens e deploy
+automático por FTP a partir do GitHub. Decisão a fechar depois de medir o
+peso real dos ficheiros.
 
 ---
 
-## 5. DNS
+## 5. Migração
 
-Deixar os nameservers da OVH. A zona configura-se quando o alojamento
-estiver ativo, e o painel costuma criar os registos automaticamente ao
-associar o domínio ao alojamento.
+- [ ] Upload do código do site antigo para o repositório
+- [ ] Medir peso total dos ficheiros e das imagens
+- [ ] Otimizar imagens (WebP) se o destino for o alojamento de 100 MB
+- [ ] Testar no URL temporário antes de apontar o DNS
+- [ ] Apontar o DNS e ativar SSL
+- [ ] Rever conteúdos desatualizados: horários, contactos, serviços
+- [ ] Google Business Profile da oficina, com link para jbmr.pt
 
 ---
 
@@ -100,8 +88,8 @@ associar o domínio ao alojamento.
 | Item | Estado |
 |---|---|
 | jbmr.com | Perdido, registado por terceiros |
-| jbmr.pt | Livre a 2026-08-31, por registar com o alojamento |
-| Alojamento | Necessário, plano por escolher |
-| Código do site antigo | Por carregar |
-| Base de dados do site antigo | **Por confirmar se existe** |
-| Email no domínio | Incluído na encomenda |
+| jbmr.pt | Livre a 2026-08-31, por registar |
+| Stack do site antigo | Estático, HTML/CSS/JS |
+| Base de dados | Não existe, não é necessária |
+| Alojamento | Gratuito, incluído com o domínio |
+| Email no domínio | Incluído |
