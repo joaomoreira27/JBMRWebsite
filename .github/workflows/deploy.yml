@@ -1,0 +1,49 @@
+name: Publicar na OVH
+
+# Cada push para main publica o site por FTP.
+# Segredos a definir em: GitHub > Settings > Secrets and variables > Actions
+#   FTP_SERVER    ex: ftp.cluster0XX.hosting.ovh.net
+#   FTP_USERNAME  utilizador FTP do alojamento
+#   FTP_PASSWORD  password desse utilizador
+# Todos aparecem no painel OVH, no separador FTP-SSH do alojamento.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ovh
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Impedir publicação sem a chave dos formulários
+        run: |
+          if grep -q "COLAR-AQUI-A-ACCESS-KEY" script.js; then
+            echo "::error::A WEB3FORMS_KEY em script.js ainda é o valor por omissão."
+            echo "Os formulários não enviam nada assim. Ver docs/formularios.md."
+            exit 1
+          fi
+
+      - name: Enviar por FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          # Raiz do site no alojamento partilhado da OVH.
+          # Confirmar no FTP: a pasta servida é a que contém o index.html.
+          server-dir: ./www/
+          # Ficheiros de trabalho que não pertencem ao site publicado
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            docs/**
+            README.md
