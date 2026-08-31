@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+# credenciais de FTP da OVH nunca entram aqui
+ftp-config.*
+deploy-config.*
