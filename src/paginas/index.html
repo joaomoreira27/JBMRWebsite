@@ -1,57 +1,62 @@
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Mais do que reparar viaturas. Cuidamos da sua segurança diária.</h1>
-                <p>Há mais de 30 anos a garantir a segurança e o desempenho do seu veículo com profissionalismo e dedicação.</p>
-                <p class="estado-oficina" data-estado-oficina></p>
-                <a href="orcamento.html" class="btn btn-primary">Pedir Orçamento</a>
-                <a href="tel:{{telefoneTel}}" class="btn btn-ghost">Ligar {{telefone}}</a>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="titulo-inicio">
+        <div class="container hero__inner">
+            <p class="eyebrow">Chaparia · Pintura · Polimentos · Paredes</p>
+            <h1 id="titulo-inicio">Mais do que reparar viaturas. <span class="destaque">Cuidamos da sua segurança diária.</span></h1>
+            <p class="hero__lead">Há mais de 30 anos a garantir a segurança e o desempenho do seu veículo com profissionalismo e dedicação.</p>
+            <div class="hero__acoes">
+                <a href="orcamento.html" class="btn btn-primary btn-lg">Pedir orçamento gratuito</a>
+                <a href="tel:{{telefoneTel}}" class="btn btn-ghost btn-lg">Ligar {{telefone}}</a>
             </div>
+            <p class="estado-oficina" data-estado-oficina></p>
+        </div>
+        <div class="hero__factos">
+            <ul class="container">
+                <li><strong>{{anosExperiencia}}+</strong><span>anos a reparar viaturas</span></li>
+                <li><strong>Chaparia</strong><span>e pintura feitas na própria oficina</span></li>
+                <li><strong>Gratuito</strong><span>o orçamento para o seu veículo</span></li>
+                <li><strong>Paredes</strong><span>{{morada_linha}}</span></li>
+            </ul>
         </div>
     </section>
 
-    <!-- Destaques -->
-    <section class="trust-strip" aria-label="Destaques">
-        <div class="container trust-strip__grid">
-            <div><strong>30+</strong><span>anos a reparar viaturas</span></div>
-            <div><strong>Chaparia</strong><span>e pintura feitas na própria oficina</span></div>
-            <div><strong>Gratuito</strong><span>o orçamento para o seu veículo</span></div>
-            <div><strong>Paredes</strong><span>Rua Tapada do Sousa, 38</span></div>
-        </div>
-    </section>
-
-    <!-- Serviços Section -->
+    <!-- Serviços -->
     <section class="section bg-light">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
+                <p class="eyebrow">Os nossos serviços</p>
                 <h2>Chaparia, pintura e polimentos em Paredes</h2>
                 <p>Oferecemos uma gama completa de serviços para manter o seu veículo em perfeitas condições.</p>
             </div>
-            <div class="three-columns">
-                <div class="card">
-                    <div class="card-icon">
-                        <svg class="icon text-primary" aria-hidden="true" focusable="false"><use href="#i-tools"></use></svg>
-                    </div>
+            <div class="bento">
+                <a href="servicos.html" class="card card--destaque reveal">
+                    <span class="card-icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-tools"></use></svg></span>
                     <h3>Chaparia</h3>
                     <p>Reparação de danos na carroçaria com técnicas avançadas e equipamentos de última geração.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <svg class="icon text-primary" aria-hidden="true" focusable="false"><use href="#i-spray-can"></use></svg>
-                    </div>
-                    <h3>Pintura Automóvel</h3>
+                    <span class="card__link">Ver serviços →</span>
+                </a>
+                <a href="servicos.html" class="card reveal">
+                    <span class="card-icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-spray-can"></use></svg></span>
+                    <h3>Pintura automóvel</h3>
                     <p>Pintura de alta qualidade com acabamento perfeito e cores originais de fábrica.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <svg class="icon text-primary" aria-hidden="true" focusable="false"><use href="#i-car"></use></svg>
-                    </div>
+                    <span class="card__link">Saber mais →</span>
+                </a>
+                <a href="servicos.html" class="card reveal">
+                    <span class="card-icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-car"></use></svg></span>
                     <h3>Polimentos</h3>
                     <p>Recuperação do brilho original da pintura, eliminando riscos e imperfeições.</p>
+                    <span class="card__link">Saber mais →</span>
+                </a>
+                <div class="card card--largo reveal">
+                    <h3>Também fazemos</h3>
+                    <ul class="lista-servicos">
+                        <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check-circle"></use></svg>Revisões gerais</li>
+                        <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check-circle"></use></svg>Travões e suspensão</li>
+                        <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check-circle"></use></svg>Diagnóstico eletrónico</li>
+                        <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check-circle"></use></svg>Óleo e filtros</li>
+                        <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check-circle"></use></svg>Ar condicionado</li>
+                    </ul>
                 </div>
-            </div>
-            <div class="text-center mt-30">
-                <a href="servicos.html" class="btn btn-primary">Ver Todos os Serviços</a>
             </div>
         </div>
     </section>
@@ -59,22 +64,23 @@
     <!-- Como pedir orçamento -->
     <section class="section bg-white">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
+                <p class="eyebrow">Processo</p>
                 <h2>Como pedir o seu orçamento</h2>
                 <p>Três passos simples, sem complicações.</p>
             </div>
             <ol class="steps">
-                <li>
+                <li class="reveal">
                     <span class="steps__num" aria-hidden="true">1</span>
                     <h3>Envie o pedido</h3>
                     <p>Preencha o formulário ou ligue para {{telefone}}.</p>
                 </li>
-                <li>
+                <li class="reveal">
                     <span class="steps__num" aria-hidden="true">2</span>
                     <h3>Avaliamos o veículo</h3>
                     <p>Analisamos o pedido e apresentamos um orçamento personalizado.</p>
                 </li>
-                <li>
+                <li class="reveal">
                     <span class="steps__num" aria-hidden="true">3</span>
                     <h3>Entregamos o carro</h3>
                     <p>Trabalho concluído, com o acabamento que precisa.</p>
@@ -83,29 +89,33 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section bg-dark">
-        <div class="container">
-            <div class="section-header text-white">
-                <h2>Peça já o seu orçamento gratuito</h2>
-                <p>Entre em contacto connosco para obter um orçamento personalizado para o seu veículo. Respondemos com a maior brevidade.</p>
-                <a href="orcamento.html" class="btn btn-primary">Pedir Orçamento</a>
-            </div>
+    <!-- Chamada à ação -->
+    <section class="band" aria-labelledby="titulo-cta">
+        <div class="container reveal">
+            <h2 id="titulo-cta">Peça já o seu orçamento gratuito</h2>
+            <p>Entre em contacto connosco para obter um orçamento personalizado para o seu veículo. Respondemos com a maior brevidade.</p>
+            <a href="orcamento.html" class="btn btn-primary btn-lg">Pedir orçamento</a>
         </div>
     </section>
 
-    <!-- Mapa Section -->
+    <!-- Localização -->
     <section class="section bg-white">
-        <div class="container">
-            <div class="section-header">
-                <h2>Onde Estamos</h2>
-                <p>Visite a nossa oficina na Rua Tapada do Sousa, 38, em Paredes, Porto.</p>
+        <div class="container local">
+            <div class="local__info reveal">
+                <p class="eyebrow">Onde estamos</p>
+                <h3>Visite-nos em Paredes</h3>
+                <p>{{morada_linha}}</p>
+                {{horario_html}}
+                <p><a href="tel:{{telefoneTel}}">{{telefone}}</a></p>
+                <p class="estado-oficina" data-estado-oficina></p>
+                <a href="https://www.google.com/maps?q=Rua+Tapada+do+Sousa+38,+4580-208+Paredes" target="_blank" rel="noopener" class="btn btn-ghost">Abrir no Google Maps</a>
             </div>
-            <div class="map-container">
-                <iframe class="mapa" title="Mapa da JBMR, Rua Tapada do Sousa 38, Paredes" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3004.5731666273!2d-8.337500000000001!3d41.1875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2479a7c1d5d8f9%3A0x6d5b5e1d7e1e5d5d!2sRua%20Tapada%20do%20Sousa%2038%2C%204580-208%20Paredes!5e0!3m2!1spt-PT!2spt!4v1650000000000!5m2!1spt-PT!2spt" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <div class="text-center mt-20">
-                <a href="https://www.google.com/maps?q=Rua+Tapada+do+Sousa+38,+4580-208+Paredes" target="_blank" rel="noopener" class="btn btn-outline">Abrir no Google Maps</a>
+            <div class="map-container reveal" data-mapa-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3004.5731666273!2d-8.337500000000001!3d41.1875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2479a7c1d5d8f9%3A0x6d5b5e1d7e1e5d5d!2sRua%20Tapada%20do%20Sousa%2038%2C%204580-208%20Paredes!5e0!3m2!1spt-PT!2spt!4v1650000000000!5m2!1spt-PT!2spt" data-mapa-titulo="Mapa da JBMR, Rua Tapada do Sousa 38, Paredes">
+                <div class="mapa-carregar">
+                    <p>O mapa só é carregado pelo Google quando o pedir.</p>
+                    <button type="button" class="btn btn-primary">Mostrar mapa</button>
+                    <a class="mapa-carregar__link" href="https://www.google.com/maps?q=Rua+Tapada+do+Sousa+38,+4580-208+Paredes" target="_blank" rel="noopener">Abrir no Google Maps</a>
+                </div>
             </div>
         </div>
     </section>

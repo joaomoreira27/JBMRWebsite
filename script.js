@@ -16,6 +16,12 @@ const EMAIL_OFICINA = 'joaobritoprd@gmail.com';
 const ENDPOINT = 'https://api.web3forms.com/submit';
 
 document.addEventListener('DOMContentLoaded', function () {
+    // ----- Desenho: cabeçalho compacto ao deslocar, entrada suave, mapa a pedido -----
+    document.documentElement.classList.add('js');
+    ligarCabecalho();
+    ligarEntradas();
+    ligarMapas();
+
     // ----- Menu mobile -----
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -255,5 +261,50 @@ function atualizarEstadoOficina() {
         el.textContent = texto;
         el.classList.toggle('estado-oficina--aberto', aberto);
         el.classList.toggle('estado-oficina--fechado', !aberto);
+    });
+}
+
+// Cabeçalho com sombra depois de a página começar a deslocar-se
+function ligarCabecalho() {
+    const cabecalho = document.querySelector('.header');
+    if (!cabecalho) return;
+    const atualizar = () => cabecalho.classList.toggle('is-scrolled', window.scrollY > 24);
+    window.addEventListener('scroll', atualizar, { passive: true });
+    atualizar();
+}
+
+// Elementos com a classe reveal aparecem quando entram no ecrã
+function ligarEntradas() {
+    const elementos = document.querySelectorAll('.reveal');
+    if (!elementos.length) return;
+    if (!('IntersectionObserver' in window)) {
+        elementos.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+    const observador = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (entrada) {
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add('is-visible');
+                observador.unobserve(entrada.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    elementos.forEach(el => observador.observe(el));
+}
+
+// O mapa do Google só é carregado quando o visitante o pede
+function ligarMapas() {
+    document.querySelectorAll('[data-mapa-src]').forEach(function (contentor) {
+        const botao = contentor.querySelector('button');
+        if (!botao) return;
+        botao.addEventListener('click', function () {
+            const iframe = document.createElement('iframe');
+            iframe.src = contentor.dataset.mapaSrc;
+            iframe.title = contentor.dataset.mapaTitulo || 'Mapa da JBMR';
+            iframe.loading = 'lazy';
+            iframe.referrerPolicy = 'no-referrer-when-downgrade';
+            iframe.setAttribute('allowfullscreen', '');
+            contentor.replaceChildren(iframe);
+        });
     });
 }
