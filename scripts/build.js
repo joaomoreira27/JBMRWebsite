@@ -157,6 +157,7 @@ for (const pagina of config.paginas) {
         url_pagina: urlPagina,
         nav_desktop: navDesktop(pagina.ativo),
         nav_mobile: navMobile(),
+        precarregar: pagina.slug === 'index' ? '    <link rel="preload" as="image" href="public/images/hero.webp" fetchpriority="high">' : '',
         dados_estruturados: pagina.indexar ? dadosEstruturados(pagina, urlPagina) : '',
         conteudo,
     };

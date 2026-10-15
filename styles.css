@@ -57,9 +57,7 @@ h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; }
 .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 20px; }
 .text-center { text-align: center; }
 .text-white { color: #fff; }
-.text-primary { color: var(--vermelho); }
 .mt-20 { margin-top: 20px; }
-.mt-30 { margin-top: 30px; }
 .bg-white { background: var(--branco); }
 .bg-light { background: var(--papel); }
 .bg-dark { background: var(--preto); color: #fff; }

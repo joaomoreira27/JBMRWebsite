@@ -3,7 +3,9 @@
   "private": true,
   "description": "Site institucional da JBMR. As páginas HTML da raiz são geradas por scripts/build.js.",
   "scripts": {
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "test": "node scripts/verifica.js",
+    "check": "npm run build && npm test"
   },
   "engines": {
     "node": ">=18"
