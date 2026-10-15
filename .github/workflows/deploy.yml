@@ -30,6 +30,14 @@ jobs:
             exit 1
           fi
 
+      - name: Impedir publicação com campos por preencher
+        run: |
+          if grep -rq "A PREENCHER" --include=*.html .; then
+            echo "::error::Há campos [A PREENCHER] nas páginas (ex.: NIPC em politica-privacidade.html)."
+            grep -rn "A PREENCHER" --include=*.html . || true
+            exit 1
+          fi
+
       - name: Enviar por FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

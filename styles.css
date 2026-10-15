@@ -137,7 +137,7 @@ img {
 }
 
 .nav-list a:hover, .nav-list a.active {
-    color: #e60000;
+    color: #ff4444;
 }
 
 .menu-toggle {
@@ -366,7 +366,7 @@ img {
 .service-card .note {
     font-size: 0.9rem;
     font-style: italic;
-    color: #888;
+    color: #6b6b6b;
     margin-top: 15px;
 }
 
@@ -588,7 +588,7 @@ img {
     margin-bottom: 40px;
 }
 
-.footer-column h3 {
+.footer-column h2 {
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 20px;
@@ -985,4 +985,68 @@ summary:focus-visible {
     body.teclado-aberto {
         padding-bottom: 0;
     }
+}
+
+/* ----- Acessibilidade e conteúdo legal (v3) ----- */
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -60px;
+    z-index: 2000;
+    padding: 10px 16px;
+    background-color: #fff;
+    color: #000;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.skip-link:focus {
+    top: 12px;
+}
+
+.foto-oficina {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.footer-legal {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.footer-legal a {
+    color: #aaa;
+    text-decoration: underline;
+}
+
+.footer-legal a:hover {
+    color: #ff4444;
+}
+
+.texto-legal {
+    max-width: 800px;
+}
+
+.texto-legal h2 {
+    font-size: 1.3rem;
+    margin: 32px 0 10px;
+}
+
+.texto-legal p {
+    color: #444;
+    margin-bottom: 12px;
+}
+
+.texto-legal a {
+    color: #d62839;
+    text-decoration: underline;
+}
+
+/* Mapa */
+.map-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
