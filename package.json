@@ -1,0 +1,11 @@
+{
+  "name": "jbmr-website",
+  "private": true,
+  "description": "Site institucional da JBMR. As páginas HTML da raiz são geradas por scripts/build.js.",
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

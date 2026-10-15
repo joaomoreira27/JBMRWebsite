@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{titulo}}</title>
+    <meta name="description" content="{{descricao}}">
+    {{robots}}
+    {{canonico}}
+    <meta name="theme-color" content="#000000">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_PT">
+    <meta property="og:site_name" content="JBMR">
+    <meta property="og:title" content="{{titulo}}">
+    <meta property="og:description" content="{{descricao}}">
+    <meta property="og:url" content="{{url_pagina}}">
+    <meta property="og:image" content="{{imagem_og}}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{imagem_og}}">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css?v={{versao_css}}">
+{{dados_estruturados}}
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+    <!-- Ícones: Bootstrap Icons (MIT), embutidos para o site não
+         depender de nenhum CDN externo. Gerados por scripts/build.js. -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+{{> icones}}
+    </svg>
+{{> cabecalho}}
+{{> menu_mobile}}
+    <main id="conteudo">
+{{conteudo}}
+    </main>
+{{> rodape}}
+{{> barra}}
+    <script type="application/json" id="horario-oficina">{{horario_json}}</script>
+    <script src="script.js?v={{versao_js}}"></script>
+</body>
+</html>

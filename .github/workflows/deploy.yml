@@ -1,5 +1,8 @@
 name: Publicar na OVH
 
+permissions:
+  contents: read
+
 # Cada push para main publica o site por FTP.
 # Segredos a definir em: GitHub > Settings > Secrets and variables > Actions
 #   FTP_SERVER    ex: ftp.cluster0XX.hosting.ovh.net
@@ -19,8 +22,17 @@ concurrency:
 jobs:
   publicar:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+
+      - name: Confirmar que as páginas correspondem à configuração
+        run: |
+          npm run build
+          if ! git diff --exit-code -- '*.html' sitemap.xml .well-known; then
+            echo "::error::As páginas HTML não estão geradas a partir de site.config.json. Correr npm run build e fazer commit."
+            exit 1
+          fi
 
       - name: Impedir publicação sem a chave dos formulários
         run: |
@@ -55,3 +67,7 @@ jobs:
             **/node_modules/**
             docs/**
             README.md
+            src/**
+            scripts/**
+            site.config.json
+            package.json

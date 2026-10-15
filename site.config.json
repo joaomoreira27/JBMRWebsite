@@ -1,0 +1,169 @@
+{
+  "nome": "JBMR",
+  "nomeCompleto": "JBMR Oficina de Automóveis Unipessoal, Lda",
+  "url": "https://jbmr.pt",
+  "telefone": "936 850 763",
+  "telefoneTel": "936850763",
+  "telefoneInternacional": "+351936850763",
+  "email": "joaobritoprd@gmail.com",
+  "morada": {
+    "rua": "Rua Tapada do Sousa, Nº 38",
+    "codigoPostal": "4580-208",
+    "localidade": "Paredes",
+    "distrito": "Porto",
+    "pais": "Portugal"
+  },
+  "anoFundacao": 1989,
+  "nipc": "[A PREENCHER]",
+  "horario": {
+    "0": [],
+    "1": [
+      [
+        "08:30",
+        "12:30"
+      ],
+      [
+        "14:00",
+        "19:00"
+      ]
+    ],
+    "2": [
+      [
+        "08:30",
+        "12:30"
+      ],
+      [
+        "14:00",
+        "19:00"
+      ]
+    ],
+    "3": [
+      [
+        "08:30",
+        "12:30"
+      ],
+      [
+        "14:00",
+        "19:00"
+      ]
+    ],
+    "4": [
+      [
+        "08:30",
+        "12:30"
+      ],
+      [
+        "14:00",
+        "19:00"
+      ]
+    ],
+    "5": [
+      [
+        "08:30",
+        "12:30"
+      ],
+      [
+        "14:00",
+        "19:00"
+      ]
+    ],
+    "6": [
+      [
+        "09:00",
+        "13:00"
+      ]
+    ]
+  },
+  "imagemOg": "/public/images/og.jpg",
+  "paginas": [
+    {
+      "ficheiro": "index.html",
+      "slug": "index",
+      "ativo": "inicio",
+      "indexar": true,
+      "canonico": true,
+      "migalhas": null,
+      "titulo": "JBMR | Chaparia e Pintura Automóvel em Paredes, Porto",
+      "descricao": "Oficina de chaparia, pintura automóvel e polimentos em Paredes, Porto. Mais de 30 anos a reparar viaturas. Peça um orçamento gratuito pelo {{telefone_simples}}.",
+      "prioridade": "1.0"
+    },
+    {
+      "ficheiro": "servicos.html",
+      "slug": "servicos",
+      "ativo": "servicos",
+      "indexar": true,
+      "canonico": true,
+      "migalhas": "Serviços",
+      "titulo": "Serviços de Chaparia e Pintura em Paredes | JBMR",
+      "descricao": "Chaparia, pintura automóvel, polimentos e serviços em parceria. Conheça todos os serviços da JBMR, oficina de automóveis em Paredes, Porto.",
+      "prioridade": "0.8"
+    },
+    {
+      "ficheiro": "sobre.html",
+      "slug": "sobre",
+      "ativo": "sobre",
+      "indexar": true,
+      "canonico": true,
+      "migalhas": "Sobre Nós",
+      "titulo": "Sobre a JBMR | Oficina de Chaparia em Paredes, Porto",
+      "descricao": "Mais de 30 anos em chaparia e pintura automóvel. Conheça a história, a missão e a equipa da JBMR, oficina em Paredes, Porto.",
+      "prioridade": "0.6"
+    },
+    {
+      "ficheiro": "contactos.html",
+      "slug": "contactos",
+      "ativo": "contactos",
+      "indexar": true,
+      "canonico": true,
+      "migalhas": "Contactos",
+      "titulo": "Contactos | JBMR, Chaparia e Pintura em Paredes, Porto",
+      "descricao": "Rua Tapada do Sousa 38, 4580-208 Paredes, Porto. Telefone {{telefone_simples}}. Fale com a JBMR, oficina de chaparia e pintura automóvel.",
+      "prioridade": "0.8"
+    },
+    {
+      "ficheiro": "orcamento.html",
+      "slug": "orcamento",
+      "ativo": "orcamento",
+      "indexar": true,
+      "canonico": true,
+      "migalhas": "Pedir Orçamento",
+      "titulo": "Orçamento Gratuito de Chaparia e Pintura | JBMR Paredes",
+      "descricao": "Peça um orçamento gratuito para chaparia, pintura ou polimento do seu veículo. A JBMR responde com a maior brevidade. Paredes, Porto.",
+      "prioridade": "0.9"
+    },
+    {
+      "ficheiro": "politica-privacidade.html",
+      "slug": "politica-privacidade",
+      "ativo": null,
+      "indexar": true,
+      "canonico": true,
+      "migalhas": "Política de Privacidade",
+      "titulo": "Política de Privacidade | JBMR Paredes",
+      "descricao": "Política de privacidade da JBMR: como recolhemos, usamos e protegemos os dados pessoais dos clientes e visitantes do site.",
+      "prioridade": "0.3"
+    },
+    {
+      "ficheiro": "404.html",
+      "slug": "404",
+      "ativo": null,
+      "indexar": false,
+      "canonico": false,
+      "migalhas": null,
+      "titulo": "Página não encontrada - JBMR Oficina de Reparação de Automóveis",
+      "descricao": ""
+    },
+    {
+      "ficheiro": "obrigado.html",
+      "slug": "obrigado",
+      "ativo": null,
+      "indexar": false,
+      "canonico": false,
+      "migalhas": null,
+      "titulo": "Pedido enviado - JBMR Oficina de Reparação de Automóveis",
+      "descricao": ""
+    }
+  ],
+  "nomeCurto": "Oficina de Automóveis Unipessoal, Lda",
+  "dataAtualizacao": "2026-10-15",
+  "securityExpira": "2027-10-15T00:00:00.000Z"
+}

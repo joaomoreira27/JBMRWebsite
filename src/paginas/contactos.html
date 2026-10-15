@@ -1,0 +1,100 @@
+    <section class="page-hero">
+        <div class="container">
+            <h1>Contactos</h1>
+            <p>Entre em contacto connosco para mais informações ou para solicitar um orçamento.</p>
+        </div>
+    </section>
+
+    <!-- Contactos Section -->
+    <section class="section bg-white">
+        <div class="container">
+            <div class="two-columns">
+                <div class="column">
+                    <h2>Informações de Contacto</h2>
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-marker-alt"></use></svg>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Morada</h3>
+                                <p>{{morada_html}}</p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-envelope"></use></svg>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Email</h3>
+                                <p><a href="mailto:{{email}}">{{email}}</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"></use></svg>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Telefone</h3>
+                                <p><a href="tel:{{telefoneTel}}">{{telefone}}</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg>
+                            </div>
+                            <div class="contact-info">
+                                <h3>Horário de Funcionamento</h3>
+                                {{horario_html}}
+                                <p class="estado-oficina" data-estado-oficina></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <h2>Envie-nos uma Mensagem</h2>
+                    <form class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome" maxlength="100" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" maxlength="120" placeholder="Seu email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" maxlength="30" placeholder="Seu telefone">
+                        </div>
+                        <div class="form-group">
+                            <label for="assunto">Assunto</label>
+                            <input type="text" id="assunto" name="assunto" maxlength="150" placeholder="Assunto da mensagem" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" maxlength="2000" rows="5" placeholder="Sua mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Onde Estamos</h2>
+                <p>Visite-nos na nossa oficina em Paredes, Porto.</p>
+            </div>
+            <div class="map-container">
+                <iframe class="mapa" title="Mapa da JBMR, Rua Tapada do Sousa 38, Paredes" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3004.5731666273!2d-8.337500000000001!3d41.1875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2479a7c1d5d8f9%3A0x6d5b5e1d7e1e5d5d!2sRua%20Tapada%20do%20Sousa%2038%2C%204580-208%20Paredes!5e0!3m2!1spt-PT!2spt!4v1650000000000!5m2!1spt-PT!2spt" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="text-center mt-20">
+                <a href="https://www.google.com/maps?q=Rua+Tapada+do+Sousa+38,+4580-208+Paredes" target="_blank" rel="noopener" class="btn btn-outline">Abrir no Google Maps</a>
+            </div>
+        </div>
+    </section>

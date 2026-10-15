@@ -89,8 +89,22 @@ function ligarFormulario(form, assuntoBase) {
     const botao = form.querySelector('button[type="submit"]');
     const textoBotao = botao ? botao.textContent : '';
 
+    // Proteções antes do envio: campo-armadilha, tempo mínimo e pausa entre pedidos.
+    const carregadoEm = Date.now();
+    let ultimoEnvio = 0;
+
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
+
+        // Bots preenchem o campo escondido e submetem logo a seguir a abrir a página.
+        if (armadilha.value || Date.now() - carregadoEm < 3000) return;
+
+        if (Date.now() - ultimoEnvio < 15000) {
+            mostrar(estado, 'aviso', 'Já recebemos o seu pedido. Aguarde uns segundos antes de enviar outro.');
+            return;
+        }
+        ultimoEnvio = Date.now();
+
 
         if (WEB3FORMS_KEY.startsWith('COLAR-AQUI')) {
             mostrar(estado, 'aviso',
@@ -176,19 +190,26 @@ function falhou(estado) {
 }
 
 // ---------------------------------------------------------------
-// Horário da oficina, em minutos desde a meia-noite.
-// Manter em sincronia com a página de contactos e com docs/seo-local.md.
-// Domingo: fechado (lista vazia).
+// Horário da oficina: vem de site.config.json, gerado para a página
+// (elemento #horario-oficina). Domingo sem intervalos = fechado.
 // ---------------------------------------------------------------
-const HORARIO_OFICINA = {
-    1: [[510, 750], [840, 1140]], // segunda: 08h30-12h30, 14h00-19h00
-    2: [[510, 750], [840, 1140]],
-    3: [[510, 750], [840, 1140]],
-    4: [[510, 750], [840, 1140]],
-    5: [[510, 750], [840, 1140]],
-    6: [[540, 780]],              // sábado: 09h00-13h00
-    0: []                         // domingo: fechado
-};
+const HORARIO_OFICINA = lerHorarioOficina();
+
+function lerHorarioOficina() {
+    const elemento = document.getElementById('horario-oficina');
+    if (!elemento) return {};
+    const paraMinutos = hora => {
+        const [h, m] = hora.split(':').map(Number);
+        return h * 60 + m;
+    };
+    const dados = JSON.parse(elemento.textContent);
+    const horario = {};
+    for (const dia of Object.keys(dados)) {
+        horario[Number(dia)] = dados[dia].map(([abre, fecha]) => [paraMinutos(abre), paraMinutos(fecha)]);
+    }
+    return horario;
+}
+
 const DIAS_SEMANA = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
 const DIA_ABREV = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
 
@@ -212,7 +233,7 @@ function atualizarEstadoOficina() {
         return; // sem Intl com fuso horário, o texto por omissão fica tal como está
     }
 
-    const intervalo = HORARIO_OFICINA[dia].find(([abre, fecha]) => minutos >= abre && minutos < fecha);
+    const intervalo = (HORARIO_OFICINA[dia] || []).find(([abre, fecha]) => minutos >= abre && minutos < fecha);
     let texto, aberto = Boolean(intervalo);
 
     if (intervalo) {
@@ -221,7 +242,7 @@ function atualizarEstadoOficina() {
         // Procura o próximo intervalo de abertura nos próximos 7 dias
         for (let k = 0; k < 7 && !texto; k++) {
             const d = (dia + k) % 7;
-            const proximo = HORARIO_OFICINA[d].find(([abre]) => k > 0 || abre > minutos);
+            const proximo = (HORARIO_OFICINA[d] || []).find(([abre]) => k > 0 || abre > minutos);
             if (proximo) {
                 const quando = k === 0 ? 'hoje' : k === 1 ? 'amanhã' : DIAS_SEMANA[d];
                 texto = 'Fechado · abre ' + quando + ' às ' + horaLegivel(proximo[0]);

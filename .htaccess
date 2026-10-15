@@ -37,6 +37,11 @@ Options -Indexes
 # Ficheiros e pastas internos nunca são servidos (repositório, notas, configuração)
 RewriteRule ^\.(?!well-known/) - [F,L]
 RewriteRule ^(docs|src|scripts|\.github)/ - [F,L]
+# Ficheiros de configuração, notas e backups nunca são servidos
+RewriteRule \.(md|json|yml|yaml|lock|bak|old|log|sql|ini|env)$ - [F,L]
+# Só os métodos necessários (bloqueia TRACE, PUT, DELETE, etc.)
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|POST)$ [NC]
+RewriteRule .* - [F,L]
 
 <IfModule mod_headers.c>
     # Política de conteúdo: só carrega recursos deste domínio, do Web3Forms (formulários) e do Google Maps (mapa)
