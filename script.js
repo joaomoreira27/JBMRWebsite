@@ -50,6 +50,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // ----- Estado da oficina (aberto / fechado) -----
     atualizarEstadoOficina();
 
+    // ----- Barra de contacto: escondida enquanto se escreve num campo -----
+    document.addEventListener('focusin', function (event) {
+        if (event.target.matches('input, textarea, select')) document.body.classList.add('teclado-aberto');
+    });
+    document.addEventListener('focusout', function () {
+        document.body.classList.remove('teclado-aberto');
+    });
+
     // ----- Formulários -----
     ligarFormulario(document.querySelector('.orcamento-form'), 'Pedido de Orçamento');
     ligarFormulario(document.querySelector('.contact-form'), 'Mensagem do site');

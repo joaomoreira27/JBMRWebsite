@@ -950,7 +950,7 @@ summary:focus-visible {
         right: 0;
         bottom: 0;
         z-index: 900;
-        padding: 10px 12px;
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
         background-color: #000;
         box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
     }
@@ -974,6 +974,15 @@ summary:focus-visible {
     }
 
     body {
-        padding-bottom: 72px;
+        padding-bottom: calc(72px + env(safe-area-inset-bottom));
+    }
+
+    /* Com o teclado aberto, a barra fixa atrapalha o preenchimento dos formulários */
+    body.teclado-aberto .barra-contacto {
+        display: none;
+    }
+
+    body.teclado-aberto {
+        padding-bottom: 0;
     }
 }
