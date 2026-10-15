@@ -32,3 +32,18 @@ Options -Indexes
     Header set X-Content-Type-Options "nosniff"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
+
+# ----- Segurança -----
+# Ficheiros e pastas internos nunca são servidos (repositório, notas, configuração)
+RewriteRule ^\.(?!well-known/) - [F,L]
+RewriteRule ^(docs|src|scripts|\.github)/ - [F,L]
+
+<IfModule mod_headers.c>
+    # Política de conteúdo: só carrega recursos deste domínio, do Web3Forms (formulários) e do Google Maps (mapa)
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com; frame-src https://www.google.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+    Header always set X-Frame-Options "DENY"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    # Activar só depois de confirmar que https://jbmr.pt funciona (bloqueia HTTP durante meses):
+    # Header always set Strict-Transport-Security "max-age=15552000"
+</IfModule>
