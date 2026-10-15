@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', function () {
         el.textContent = new Date().getFullYear() - Number(el.dataset.anosDesde);
     });
 
+    // ----- Estado da oficina (aberto / fechado) -----
+    atualizarEstadoOficina();
+
     // ----- Formulários -----
     ligarFormulario(document.querySelector('.orcamento-form'), 'Pedido de Orçamento');
     ligarFormulario(document.querySelector('.contact-form'), 'Mensagem do site');
@@ -162,4 +165,66 @@ function mostrar(elemento, tipo, texto) {
 function falhou(estado) {
     mostrar(estado, 'erro',
         'Não foi possível enviar. Ligue 936 850 763 ou escreva para ' + EMAIL_OFICINA + '.');
+}
+
+// ---------------------------------------------------------------
+// Horário da oficina, em minutos desde a meia-noite.
+// Manter em sincronia com a página de contactos e com docs/seo-local.md.
+// Domingo: fechado (lista vazia).
+// ---------------------------------------------------------------
+const HORARIO_OFICINA = {
+    1: [[510, 750], [840, 1140]], // segunda: 08h30-12h30, 14h00-19h00
+    2: [[510, 750], [840, 1140]],
+    3: [[510, 750], [840, 1140]],
+    4: [[510, 750], [840, 1140]],
+    5: [[510, 750], [840, 1140]],
+    6: [[540, 780]],              // sábado: 09h00-13h00
+    0: []                         // domingo: fechado
+};
+const DIAS_SEMANA = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+const DIA_ABREV = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+
+function horaLegivel(minutos) {
+    return String(Math.floor(minutos / 60)).padStart(2, '0') + 'h' + String(minutos % 60).padStart(2, '0');
+}
+
+function atualizarEstadoOficina() {
+    const elementos = document.querySelectorAll('[data-estado-oficina]');
+    if (!elementos.length) return;
+
+    let dia, minutos;
+    try {
+        const partes = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/Lisbon', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
+        }).formatToParts(new Date());
+        const valor = tipo => partes.find(p => p.type === tipo).value;
+        dia = DIA_ABREV[valor('weekday')];
+        minutos = (Number(valor('hour')) % 24) * 60 + Number(valor('minute'));
+    } catch (erro) {
+        return; // sem Intl com fuso horário, o texto por omissão fica tal como está
+    }
+
+    const intervalo = HORARIO_OFICINA[dia].find(([abre, fecha]) => minutos >= abre && minutos < fecha);
+    let texto, aberto = Boolean(intervalo);
+
+    if (intervalo) {
+        texto = 'Aberto agora · fecha às ' + horaLegivel(intervalo[1]);
+    } else {
+        // Procura o próximo intervalo de abertura nos próximos 7 dias
+        for (let k = 0; k < 7 && !texto; k++) {
+            const d = (dia + k) % 7;
+            const proximo = HORARIO_OFICINA[d].find(([abre]) => k > 0 || abre > minutos);
+            if (proximo) {
+                const quando = k === 0 ? 'hoje' : k === 1 ? 'amanhã' : DIAS_SEMANA[d];
+                texto = 'Fechado · abre ' + quando + ' às ' + horaLegivel(proximo[0]);
+            }
+        }
+        texto = texto || 'Fechado';
+    }
+
+    elementos.forEach(function (el) {
+        el.textContent = texto;
+        el.classList.toggle('estado-oficina--aberto', aberto);
+        el.classList.toggle('estado-oficina--fechado', !aberto);
+    });
 }
