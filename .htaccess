@@ -1,4 +1,7 @@
 RewriteEngine On
+# Uma só versão do site: www.jbmr.pt redireciona para jbmr.pt (canónico)
+RewriteCond %{HTTP_HOST} ^www\.jbmr\.pt$ [NC]
+RewriteRule ^(.*)$ https://jbmr.pt/$1 [L,R=301]
 RewriteCond %{ENV:HTTPS} !on
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 

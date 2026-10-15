@@ -42,6 +42,11 @@ document.addEventListener('DOMContentLoaded', function () {
         yearSpan.textContent = new Date().getFullYear();
     }
 
+    // ----- Anos de experiência (contam a partir do ano indicado no HTML) -----
+    document.querySelectorAll('[data-anos-desde]').forEach(function (el) {
+        el.textContent = new Date().getFullYear() - Number(el.dataset.anosDesde);
+    });
+
     // ----- Formulários -----
     ligarFormulario(document.querySelector('.orcamento-form'), 'Pedido de Orçamento');
     ligarFormulario(document.querySelector('.contact-form'), 'Mensagem do site');
